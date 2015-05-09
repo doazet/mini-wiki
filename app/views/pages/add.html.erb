@@ -1,0 +1,25 @@
+<h1>Создание страницы</h1>
+ <% if @page.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@page.errors.count, "error") %>Из-за этих ошибок страница не будет сохранена:
+      </h2>
+      <ul>
+        <% @page.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<%= form_for @page, url: add_path do |f| %>
+    <p>Введите имя страницы для отображения в адресной строке<br/>
+    	(допустимы только латинские буквы)<br/>
+    <%= f.text_field :name %></p>
+    <p>Введите заголовок страницы<br/>
+	<%= f.text_field :title %></p>
+	<p>Введите текст<br/>
+    <%= f.text_field :text %></p>
+    <%= f.submit "Создать страницу" %>
+    
+<% end %>

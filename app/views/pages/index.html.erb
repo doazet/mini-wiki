@@ -1,0 +1,12 @@
+<h1>Карта сайта:</h1>
+
+<%= @page.each do |page| %>
+	<h2><%= link_to page.title, show_path(@page, :name => page.name, :format => "") %></h2>
+	<br/>
+	<%= link_to 'Редактировать', edit_path(@page, :name => page.name, :format => "") %>
+	<%= link_to 'Удалить', destroy_path(@page, :name => page.name, :format =>""), 
+	method: :delete, 
+	data: { confirm: 'Вы действительно хотите удалить страницу?' } %>
+<% end %>
+
+<%= link_to 'Добавить страницу', add_path %>

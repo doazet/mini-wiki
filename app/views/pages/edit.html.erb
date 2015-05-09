@@ -1,0 +1,13 @@
+<h1>Редактирование страницы</h1>
+
+<%= form_for @page, url: edit_path(@page, :name => @page.name, :format => ""), method: :patch do |f|  %>
+    <p>Введите имя страницы для отображения в адресной строке<br/>
+    	(допустимы только латинские буквы)<br/>
+    <%= f.text_field :name %></p>
+    <p>Введите заголовок страницы<br/>
+	<%= f.text_field :title %></p>
+	<p>Введите текст<br/>
+    <%= f.text_field :text %></p>
+    <%= f.submit "Создать страницу" %>
+    
+<% end %>

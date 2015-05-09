@@ -1,0 +1,25 @@
+<h1>Создание подстраницы</h1>
+ <% if @subpage.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@subpage.errors.count, "error") %>Из-за этих ошибок страница не будет сохранена:
+      </h2>
+      <ul>
+        <% @subpage.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<%= form_for @subpage, url: add_subpage_path do |f| %>
+    <p>Введите имя страницы для отображения в адресной строке<br/>
+    	(допустимы только латинские буквы)<br/>
+    <%= f.text_field :name %></p>
+    <p>Введите заголовок страницы<br/>
+	<%= f.text_field :title %></p>
+	<p>Введите текст<br/>
+    <%= f.text_field :text %></p>
+    <%= f.submit "Создать подстраницу" %>
+    
+<% end %>
